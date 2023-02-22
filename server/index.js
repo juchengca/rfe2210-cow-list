@@ -7,6 +7,8 @@ const app = express();
 const db = require('../database/index.js');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 app.get('/', (req, res) => {
   res.send('Hello from the server!');
@@ -21,9 +23,8 @@ app.get('/api/cows', (req, res) => {
 
 // create new cow data
 app.post('/api/cows', (req, res) => {
-  var cows = {};
-  cows.name = 'justin';
-  cows.description = 'test';
+  var cows = req.body;
+  console.log(cows);
   db.dbCreate(cows, () => {
     res.send();
   })
