@@ -25,7 +25,7 @@ const dbRead = (callback) => {
 };
 
 const dbCreate = (cow, callback) => {
-  var query = `INSERT IGNORE INTO data (name, description) VALUES ('${cow.name}', '${cow.description}')`;
+  var query = `INSERT IGNORE INTO data (name, description) VALUES ("${cow.name}", "${cow.description}")`;
   con.connect(function(err) {
     if (err) {
       console.log('err: ', err);
@@ -45,7 +45,7 @@ const createTable = () => {
     if (err) {
       console.log('err: ', err);
     }
-    con.query('CREATE TABLE data (id INT NOT NULL AUTO_INCREMENT, name varchar(255) PRIMARY KEY, description varchar(255))', (err) => {
+    con.query('CREATE TABLE data (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name varchar(255) UNIQUE, description varchar(255))', (err) => {
       console.log(err);
     })
   })

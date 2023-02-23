@@ -10,7 +10,7 @@ const List = (props) => {
       <h3>List of cows</h3>
       <ul>
         {cows.map((cow) =>
-          <li key={cow.name}>{cow.name}</li>
+          <li onClick={() => props.showSelected(cow)} key={cow.name}>{cow.name}</li>
         )}
       </ul>
     </div>

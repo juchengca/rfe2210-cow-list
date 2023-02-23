@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 const Create = (props) => {
 
-  var [cow, setCow] = useState({name: '', desc: ''});
+  var [cow, setCow] = useState({name: '', description: ''});
 
   const handleChange = (e) => {
     var target = e.target.name;
@@ -23,7 +23,7 @@ const Create = (props) => {
       <form>
         Name: <input type='text' name='name' onChange={handleChange}/>
         <br></br>
-        Description: <input type='text' name='desc' onChange={handleChange}/>
+        Description: <input type='text' name='description' onChange={handleChange}/>
         <br></br>
         <button onClick={handleSubmit}>Submit</button>
       </form>
